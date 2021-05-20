@@ -3,25 +3,33 @@
     Layout = null;
 }
 
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
 <h3>Mvc Kamp Tablo Ornegi</h3>
 <br />
-<table>
+<table class="table table-hover">
     <tr>
         <th>ID</th>
         <th>Adi</th>
         <th>Aciklama</th>
         <th>Durum</th>
+        <th>Guncelle</th>
     </tr>
     <tr>
         <td>1</td>
         <td>Egitim</td>
         <td>Aciklama Yaptik</td>
         <td>True</td>
+        <td><button class="btn btn-success">Guncelle</button></td>
     </tr>
     <tr>
         <td>2</td>
         <td>Spor</td>
         <td>Aciklama Yaptik</td>
         <td>True</td>
+        <td><button class="btn btn-success">Guncelle</button></td>
     </tr>
 </table>
+<button class="btn btn-info">Button</button>
+<button class="btn btn-warning">Kategori Listesi</button>
+<button class="btn btn-danger">Kategori Aciklamalari</button>

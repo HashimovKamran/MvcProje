@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row" style="color: white; text-align: center; font-family: Monospace;">
+    <div class="col" style="background-color: deepskyblue; padding:20px; margin: 10px;">
+        <h1>@ViewData["totalCategories"]</h1>
+        <h5>Toplam kategori sayısı</h5>
+    </div>
+    <div class="col" style="background-color: limegreen; padding: 20px; margin: 10px">
+        <h1>@ViewData["headingCount"]</h1>
+        <h5>Başlık tablosunda "yazılım" kategorisine ait başlık sayısı</h5>
+    </div>
+    <div class="col" style="background-color: dodgerblue; padding: 20px; margin: 10px">
+        <h1>@ViewData["writerWithLetterA"]</h1>
+        <h5>Yazar adında 'a' harfi geçen yazar sayısı</h5>
+    </div>
+    <div class="col" style="background-color: mediumpurple; padding: 20px; margin: 10px">
+        <h1>@ViewData["headingCategoryName"]</h1>
+        <h5>En fazla başlığa sahip kategori adı</h5>
+    </div>
+    <div class="col" style="background-color: cadetblue; padding: 20px; margin: 10px">
+        <h1>@ViewData["statusCount"]</h1>
+        <h5>Kategori tablosunda durumu true olan kategoriler ile false olan kategoriler arasındaki sayısal fark</h5>
+    </div>
+</div>

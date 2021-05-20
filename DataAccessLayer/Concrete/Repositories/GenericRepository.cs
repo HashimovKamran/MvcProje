@@ -20,11 +20,15 @@ namespace DataAccessLayer.Concrete.Repositories
             _object = context.Set<T>();
         }
 
-
         public void Delete(T entity)
         {
             _object.Remove(entity);
             context.SaveChanges();
+        }
+
+        public T Get(Expression<Func<T, bool>> filter)
+        {
+            return _object.SingleOrDefault(filter);
         }
 
         public void Insert(T entity)
@@ -42,7 +46,7 @@ namespace DataAccessLayer.Concrete.Repositories
         {
             return _object.Where(filter).ToList();
         }
-
+         
         public void Update(T entity)
         {
             context.SaveChanges();

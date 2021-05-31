@@ -20,17 +20,17 @@ namespace BusinessLayer.Concrete
 
         public void Add(Heading heading)
         {
-            throw new NotImplementedException();
+            _headingDal.Insert(heading);
         }
 
         public void Delete(Heading heading)
         {
-            throw new NotImplementedException();
+            _headingDal.Update(heading);
         }
 
         public Heading GetByID(int id)
         {
-            throw new NotImplementedException();
+            return _headingDal.Get(h => h.HeadingID == id);
         }
 
         public List<Heading> GetList()
@@ -40,7 +40,7 @@ namespace BusinessLayer.Concrete
 
         public void Update(Heading heading)
         {
-            throw new NotImplementedException();
+            _headingDal.Update(heading);
         }
     }
 }

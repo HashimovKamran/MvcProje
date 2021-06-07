@@ -1,12 +1,27 @@
-﻿@model EntityLayer.Concrete.Contact
+﻿@model EntityLayer.Concrete.Message
 
 @{
-    ViewBag.Title = "GetContactDetails";
+    ViewBag.Title = "GetSendBoxMessageDetails";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <!DOCTYPE html>
 <html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 3 | Compose Message</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <!-- Theme style -->
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.css">
+
+    <script src="~/AdminLTE-3.0.4/plugins/summernote/summernote.min.js"></script>
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
 <body class="hold-transition sidebar-mini">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -20,7 +35,6 @@
     </section>
     <!-- Main content -->
     <section class="content">
-
         <div class="row">
             @Html.Action("PartialContact", "Contact")
             <!-- /.col -->
@@ -36,33 +50,15 @@
                     <!-- /.card-header -->
                     <div class="card-body p-0">
                         <div class="mailbox-read-info">
-                            <h5>Konu: @Html.DisplayFor(c => c.Subject)</h5>
+                            <h5>Konu: @Html.DisplayFor(m => m.Subject)</h5>
                             <h6>
-                                Mail: @Html.DisplayFor(c => c.UserEmail)
-                                <span class="mailbox-read-time float-right">@(((DateTime)Model.ContactDate).ToString("dd-MMM-yyyy"))</span>
+                                Alıcı: @Html.DisplayFor(m => m.ReceiverMail)
+                                <span class="mailbox-read-time float-right">@(((DateTime)Model.MessageDate).ToString("dd-MMM-yyyy"))</span>
                             </h6>
                         </div>
-                        <!-- /.mailbox-read-info -->
-                        <div class="mailbox-controls with-border text-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Delete">
-                                    <i class="far fa-trash-alt"></i>
-                                </button>
-                                <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Reply">
-                                    <i class="fas fa-reply"></i>
-                                </button>
-                                <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Forward">
-                                    <i class="fas fa-share"></i>
-                                </button>
-                            </div>
-                            <!-- /.btn-group -->
-                            <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Print">
-                                <i class="fas fa-print"></i>
-                            </button>
-                        </div>
                         <!-- /.mailbox-controls -->
-                        <div class="mailbox-read-message">
-                            <p>@Html.DisplayFor(c => c.Messages)</p>
+                        <div class="form-group" style="margin:10px">
+                            @Html.Raw(Model.MessageContent)
                         </div>
                         <!-- /.mailbox-read-message -->
                     </div>

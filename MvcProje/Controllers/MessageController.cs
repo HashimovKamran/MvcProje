@@ -16,6 +16,7 @@ namespace MvcProje.Controllers
 
         MessageManager messageManager = new MessageManager(new EfMessageDal());
         MessageValidator messageValidator = new MessageValidator();
+        DraftController draftController = new DraftController();
 
         public ActionResult Inbox()
         {
@@ -48,21 +49,47 @@ namespace MvcProje.Controllers
         }
 
         [HttpPost, ValidateInput(false)]
-        public ActionResult NewMessage(Message message)
+        public ActionResult NewMessage(Message message, string button)
         {
             ValidationResult results = messageValidator.Validate(message);
-            if (results.IsValid)
+            if (button == "draft")
             {
-                message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                message.SenderMail = "admin@gmail.com";
-                messageManager.Add(message);
-                return RedirectToAction("SendBox");
-            }
-            else
-            {
-                foreach (var item in results.Errors)
+                results = messageValidator.Validate(message);
+                if (results.IsValid)
                 {
-                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                    Draft draft = new Draft();
+                    draft.ReceiverMail = message.ReceiverMail;
+                    draft.Subject = message.Subject;
+                    draft.DraftContent = message.MessageContent;
+                    draft.DraftDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                    draftController.AddDraft(draft);
+                    return RedirectToAction("Draft","Draft");
+                }
+                else
+                {
+                    foreach (var item in results.Errors)
+                    {
+                        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                    }
+                }
+            }
+
+            else if (button == "save")
+            {
+                results = messageValidator.Validate(message);
+                if (results.IsValid)
+                {
+                    message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                    message.SenderMail = "admin@gmail.com";
+                    messageManager.Add(message);
+                    return RedirectToAction("SendBox");
+                }
+                else
+                {
+                    foreach (var item in results.Errors)
+                    {
+                        ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                    }
                 }
             }
             return View();

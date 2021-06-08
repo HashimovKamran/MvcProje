@@ -13,12 +13,12 @@ namespace EntityLayer.Concrete
         public int DraftID { get; set; }
 
         [StringLength(50)]
-        public string Mail { get; set; }
+        public string ReceiverMail { get; set; }
 
         [StringLength(100)]
         public string Subject { get; set; }
 
-        public string MessageContent { get; set; }
-        public DateTime MessageDate { get; set; }
+        public string DraftContent { get; set; }
+        public DateTime DraftDate { get; set; }
     }
 }

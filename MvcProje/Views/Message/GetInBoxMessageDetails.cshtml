@@ -43,7 +43,7 @@
                         </div>
                         <!-- /.mailbox-controls -->
                         <div class="mailbox-read-message">
-                            <p>@Html.DisplayFor(m => m.MessageContent)</p>
+                            @Html.Raw(Model.MessageContent)
                         </div>
                         <!-- /.mailbox-read-message -->
                     </div>

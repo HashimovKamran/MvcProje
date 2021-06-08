@@ -1,7 +1,7 @@
-﻿@model EntityLayer.Concrete.Message
+﻿@model EntityLayer.Concrete.Draft
 
 @{
-    ViewBag.Title = "GetSendBoxMessageDetails";
+    ViewBag.Title = "GetDraftDetails";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -35,15 +35,15 @@
                     <!-- /.card-header -->
                     <div class="card-body p-0">
                         <div class="mailbox-read-info">
-                            <h5>Konu: @Html.DisplayFor(m => m.Subject)</h5>
+                            <h5>Konu: @Html.DisplayFor(d => d.Subject)</h5>
                             <h6>
-                                Alıcı: @Html.DisplayFor(m => m.ReceiverMail)
-                                <span class="mailbox-read-time float-right">@(((DateTime)Model.MessageDate).ToString("dd-MMM-yyyy"))</span>
+                                Mail: @Html.DisplayFor(d => d.ReceiverMail)
+                                <span class="mailbox-read-time float-right">@(((DateTime)Model.DraftDate).ToString("dd-MMM-yyyy"))</span>
                             </h6>
                         </div>
                         <!-- /.mailbox-controls -->
-                        <div class="form-group" style="margin:10px">
-                            @Html.Raw(Model.MessageContent)
+                        <div class="mailbox-read-message">
+                            @Html.Raw(Model.DraftContent)
                         </div>
                         <!-- /.mailbox-read-message -->
                     </div>

@@ -116,6 +116,10 @@
     <Compile Include="Migrations\202106071601284_mig_add_draft.designer.cs">
       <DependentUpon>202106071601284_mig_add_draft.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106080211307_mig_change_name_convention.cs" />
+    <Compile Include="Migrations\202106080211307_mig_change_name_convention.designer.cs">
+      <DependentUpon>202106080211307_mig_change_name_convention.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -162,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106071601284_mig_add_draft.resx">
       <DependentUpon>202106071601284_mig_add_draft.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106080211307_mig_change_name_convention.resx">
+      <DependentUpon>202106080211307_mig_change_name_convention.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

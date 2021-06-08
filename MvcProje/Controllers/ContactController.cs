@@ -14,8 +14,8 @@ namespace MvcProje.Controllers
         ContactManager contactManager = new ContactManager(new EfContactDal());
         ContactValidator contactValidator = new ContactValidator();
         MessageManager messageManager = new MessageManager(new EfMessageDal());
+        DraftManager draftManager = new DraftManager(new EfDraftDal());
 
-        // GET: Contact
         public ActionResult Index()
         {
             var contactValues = contactManager.GetList();
@@ -33,6 +33,7 @@ namespace MvcProje.Controllers
             ViewData["contactMessageCount"] = contactManager.GetList().Count();
             ViewData["messageInboxCount"] = messageManager.GetListInbox().Count();
             ViewData["messageSendboxCount"] = messageManager.GetListSendbox().Count();
+            ViewData["messageDraftCount"] = draftManager.GetList().Count();
             return PartialView();
         }
     }

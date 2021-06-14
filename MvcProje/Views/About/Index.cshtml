@@ -6,23 +6,58 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+@{ string color = "";}
+
 <h2>Hakkımda Veri Listesi</h2>
 <br />
 <table class="table table-hover">
-    <tr>
-        <th>#</th>
-        <th>Hakkımda Başlığı</th>
-        <th>Aktif Yap</th>
-        <th>Pasif Yap</th>
-    </tr>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Hakkımda Başlığı</th>
+            <th>Durum</th>
+        </tr>
+    </thead>
+
     @foreach (var item in Model)
     {
-        <tr>
-            <td>@item.AboutID</td>
-            <td>Başlık</td>
-            <td><a href="#" class="btn btn-warning">Aktif Yap</a></td>
-            <td><a href="#" class="btn btn-danger">Pasif Yap</a></td>
-        </tr>
+        if (item.AboutStatus == true)
+        {
+            color = "btn-danger";
+        }
+        else
+        {
+            color = "btn-success";
+        }
+        <tbody>
+            <tr>
+                <td>@item.AboutID</td>
+                <td>Başlık</td>
+                <td>
+                    @if (item.AboutStatus == true)
+                    {
+                        <span class="badge badge-success">Aktif</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-danger">Pasif</span>
+                    }
+                </td>
+                <td class="project-actions text-right">
+                    <a class="btn @color btn-sm" href="/About/AboutStatus/@item.AboutID">
+                        <i class="fas fa-trash"></i>
+                        @if (item.AboutStatus == true)
+                        {
+                            <text>Pasif yap</text>
+                        }
+                        else
+                        {
+                            <text>Aktif yap</text>
+                        }
+                    </a>
+                </td>
+            </tr>
+        </tbody>
     }
 </table>
 @Html.Action("PartialAbout", "About")

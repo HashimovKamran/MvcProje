@@ -26,13 +26,29 @@ namespace MvcProje.Controllers
 
         public ActionResult Sendbox()
         {
+            int isRead = 0, isNotRead = 0;
             var messageListSendbox = messageManager.GetListSendbox();
+            foreach (var item in messageListSendbox)
+            {
+                if (item.MessageRead == true)
+                {
+                    isRead++;
+                }
+                else
+                {
+                    isNotRead++;
+                }
+            }
+            ViewData["isRead"] = isRead;
+            ViewData["isNotRead"] = isNotRead;
             return View(messageListSendbox);
         }
 
         public ActionResult GetInBoxMessageDetails(int id)
         {
             var messageValue = messageManager.GetByID(id);
+            messageValue.MessageRead = true;
+            messageManager.Add(messageValue);
             return View(messageValue);
         }
 
@@ -54,7 +70,6 @@ namespace MvcProje.Controllers
             ValidationResult results = messageValidator.Validate(message);
             if (button == "draft")
             {
-                results = messageValidator.Validate(message);
                 if (results.IsValid)
                 {
                     Draft draft = new Draft();
@@ -76,11 +91,11 @@ namespace MvcProje.Controllers
 
             else if (button == "save")
             {
-                results = messageValidator.Validate(message);
                 if (results.IsValid)
                 {
                     message.MessageDate = DateTime.Parse(DateTime.Now.ToShortDateString());
                     message.SenderMail = "admin@gmail.com";
+                    message.MessageRead = false;
                     messageManager.Add(message);
                     return RedirectToAction("SendBox");
                 }

@@ -16,6 +16,7 @@ namespace MvcProje.Controllers
         MessageManager messageManager = new MessageManager(new EfMessageDal());
         DraftManager draftManager = new DraftManager(new EfDraftDal());
 
+        [Authorize(Roles = "A")]
         public ActionResult Index()
         {
             var contactValues = contactManager.GetList();

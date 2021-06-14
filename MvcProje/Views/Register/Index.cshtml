@@ -1,0 +1,22 @@
+﻿@model EntityLayer.Concrete.AdminForLoginAndRegister
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<h1>Kaydol Sayfası</h1>
+<br />
+@using (Html.BeginForm("Index", "Register", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("UserName")
+        @Html.TextBoxFor(x => x.AdminUserName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Password")
+        @Html.TextAreaFor(x => x.AdminPassword, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-info">Kaydol</button>
+    </div>
+}

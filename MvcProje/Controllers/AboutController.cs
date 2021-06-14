@@ -33,6 +33,21 @@ namespace MvcProje.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult AboutStatus(int id)
+        {
+            var aboutValue = aboutManager.GetByID(id);
+            if (aboutValue.AboutStatus == true)
+            {
+                aboutValue.AboutStatus = false;
+            }
+            else
+            {
+                aboutValue.AboutStatus = true;
+            }
+            aboutManager.Update(aboutValue);
+            return RedirectToAction("Index");
+        }
+
         public PartialViewResult PartialAbout()
         {
             return PartialView();

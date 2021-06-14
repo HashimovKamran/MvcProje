@@ -28,6 +28,14 @@
                     <div class="card-header">
                         <h3 class="card-title">Mesajı Oku</h3>
                         <div class="card-tools">
+                            @if (Model.MessageRead == true)
+                            {
+                                <span class="badge badge-success">Okundu</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-danger">Okunmadı</span>
+                            }
                             <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Previous"><i class="fas fa-chevron-left"></i></a>
                             <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Next"><i class="fas fa-chevron-right"></i></a>
                         </div>

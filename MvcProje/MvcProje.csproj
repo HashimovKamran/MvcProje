@@ -197,6 +197,17 @@
     <Content Include="AdminLTE-3.0.4\login-form-19\js\main.js" />
     <Content Include="AdminLTE-3.0.4\login-form-19\js\popper.js" />
     <Content Include="AdminLTE-3.0.4\login-form-19\main.html" />
+    <Content Include="Myself\css\style.css" />
+    <Content Include="Myself\images\5.jpg" />
+    <Content Include="Myself\images\img1.jpg" />
+    <Content Include="Myself\images\picture.png" />
+    <Content Include="Myself\images\sprite.png" />
+    <Content Include="Myself\index.html" />
+    <Content Include="Myself\js\bars.js" />
+    <Content Include="Myself\js\easyResponsiveTabs.js" />
+    <Content Include="Myself\js\jquery-1.11.1.min.js" />
+    <Content Include="Myself\js\jquery.circlechart.js" />
+    <Content Include="Myself\w3layouts-License.txt" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
